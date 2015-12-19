@@ -18,6 +18,9 @@ class ContactsController extends AppController
      */
     public function index()
     {
+        parent::loadData();
+        $this->set('page_title', 'Liên hệ');
+        $this->set('page_title_en', 'Contacts');
         $this->set('contacts', $this->paginate($this->Contacts));
         $this->set('_serialize', ['contacts']);
     }

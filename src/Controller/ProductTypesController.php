@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 
@@ -207,4 +206,3 @@ class ProductTypesController extends AppController
     }
 
 }
-

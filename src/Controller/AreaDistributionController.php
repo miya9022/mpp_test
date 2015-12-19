@@ -18,6 +18,9 @@ class AreaDistributionController extends AppController
      */
     public function index()
     {
+        parent::loadData();
+        $this->set('page_title', 'Hệ thống phân phối');
+        $this->set('page_title_en', 'Distribution system');
         $this->set('areaDistribution', $this->paginate($this->AreaDistribution));
         $this->set('_serialize', ['areaDistribution']);
     }

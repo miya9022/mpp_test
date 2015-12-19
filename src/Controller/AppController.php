@@ -82,7 +82,6 @@ class AppController extends Controller
         $services = $services_loaded->find();
         $this->set('services', $services);
         $this->set(compact('services'));
-        // $this->set('_serialize', ['services']);
     }
 
     protected function loadProducts()

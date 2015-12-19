@@ -1,4 +1,7 @@
 <!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
+=======
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+>>>>>>> d22ef4a8d400e26b828f3fd3445d4d7c81b35e3e
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Area Distribution'), ['action' => 'add']) ?></li>
@@ -36,6 +39,7 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
+<<<<<<< HEAD
 </div> -->
 
 <?php
@@ -466,7 +470,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
   =========================================================-->
   <footer class="top-border">
 
-    <div class="map">
+    <!-- <div class="map">
       <div id="google-map" class="map_model" data-zoom="11"></div>
       <ul class="map_locations">
         <li data-x="105.876204" data-y="20.985991" data-basic="images/gmap_marker.png" data-active="images/gmap_marker_active.png">
@@ -499,7 +503,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
           </div>
         </li>
       </ul>
-    </div>
+    </div> -->
 
     <section class="well1">
       <div class="container"> 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
@@ -40,3 +41,21 @@ Congratulations! Your free hosting account has been activated.<br>
 <div style="text-align: center;"><b><iframe src="https://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Ffree.byethost&amp;width=570&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=false&amp;height=270" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:570px; height:270px;" allowTransparency="true"></iframe><br><a href="https://ifastnet.com/portal/sharedhosting.php" target="_blank" ><img src="http://ifastnet.com/byet-728x90-ultimate-blue3.gif" width="768" height="90" alt="Paid Hosting Premium Hosting"></a><br></div>
 </body>
 </html>
+=======
+<?php
+/**
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @since         0.10.0
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ */
+
+require 'webroot' . DIRECTORY_SEPARATOR . 'index.php';
+>>>>>>> d22ef4a8d400e26b828f3fd3445d4d7c81b35e3e

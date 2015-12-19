@@ -40,7 +40,6 @@ class PagesController extends AppController
         parent::loadData();
         $this->set('page_title', 'Công ty TNHH Mai Phương');
         $this->set('page_title_en', 'Mai Phuong Limited Company');
-        
 
         $path = func_get_args();
 

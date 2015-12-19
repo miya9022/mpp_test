@@ -1,4 +1,7 @@
 <!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
+=======
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+>>>>>>> d22ef4a8d400e26b828f3fd3445d4d7c81b35e3e
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Contact'), ['action' => 'add']) ?></li>
@@ -36,6 +39,7 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
+<<<<<<< HEAD
 </div> -->
 
 <?php
@@ -466,7 +470,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
   =========================================================-->
   <footer class="top-border">
 
-    <div class="map">
+    <!-- <div class="map">
       <div id="google-map" class="map_model" data-zoom="11"></div>
       <ul class="map_locations">
         <li data-x="105.876204" data-y="20.985991" data-basic="images/gmap_marker.png" data-active="images/gmap_marker_active.png">
@@ -499,7 +503,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
           </div>
         </li>
       </ul>
-    </div>
+    </div> -->
 
     <section class="well1">
       <div class="container"> 
@@ -516,36 +520,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <!-- Include all compiled plugins (below), or include individual files as needed -->    
     <?= $this->Html->script('bootstrap.min') ?>
     <?= $this->Html->script('tm-scripts') ?>
-    <script>
-        setInterval(
-            function () {
-                // Finds the ul holding the little dots
-                var ul = $(".camera_pag_ul");
-
-                // Finds the currently selected dot
-                var selected = ul.find('.cameracurrent');
-
-                // Finds the next dot to click
-                var next = selected.next('li');
-
-                // If the next dot exists click it, else start over with first one
-                if (next.length != 0) {
-                    next.click();
-                }
-                else {
-                    ul.find('li:first').click();
-                }
-            }, 10000
-        );
-
-        $(function(){
-            $('#camera').on('scroll', function(event){
-                $('.sliderImage').css({
-                    'background-position': $(event.target).scrollLeft()/6-10
-                });
-            });
-        });
-    </script>
     <!-- <script src="js/bootstrap.min.js"></script>
     // <script src="js/tm-scripts.js"></script>    --> 
   <!-- </script> -->

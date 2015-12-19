@@ -50,7 +50,6 @@ Router::scope('/', function ($routes) {
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
     $routes->connect('/en', ['controller' => 'Pages', 'action' => 'display', 'home_en']);
-
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
