@@ -32,6 +32,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+
+    <script type="text/javascript"> 
+        function open_windows(url) {
+        mywin = window.open(url,"win",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=760,height=650');
+        mywin.focus();
+        }
+    </script>
+
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">

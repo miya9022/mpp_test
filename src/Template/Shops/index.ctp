@@ -14,6 +14,8 @@
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('area_id') ?></th>
                 <th><?= $this->Paginator->sort('name') ?></th>
+                <th><?= $this->Paginator->sort('phone') ?></th>
+                <th><?= $this->Paginator->sort('email') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -23,6 +25,8 @@
                 <td><?= $this->Number->format($shop->id) ?></td>
                 <td><?= $shop->has('area_distribution') ? $this->Html->link($shop->area_distribution->name, ['controller' => 'AreaDistribution', 'action' => 'view', $shop->area_distribution->id]) : '' ?></td>
                 <td><?= h($shop->name) ?></td>
+                <td><?= h($shop->phone) ?></td>
+                <td><?= h($shop->email) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $shop->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $shop->id]) ?>

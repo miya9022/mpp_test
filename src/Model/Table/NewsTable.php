@@ -43,10 +43,6 @@ class NewsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('header', 'create')
-            ->notEmpty('header');
-
-        $validator
             ->requirePresence('title', 'create')
             ->notEmpty('title');
 
@@ -55,8 +51,7 @@ class NewsTable extends Table
             ->notEmpty('content');
 
         $validator
-            ->requirePresence('url', 'create')
-            ->notEmpty('url');
+            ->allowEmpty('url_img');
 
         $validator
             ->requirePresence('post_date', 'create')

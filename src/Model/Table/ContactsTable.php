@@ -43,14 +43,39 @@ class ContactsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('name');
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         $validator
-            ->allowEmpty('address');
+            ->requirePresence('address', 'create')
+            ->notEmpty('address');
 
         $validator
-            ->allowEmpty('phone');
+            ->requirePresence('phone', 'create')
+            ->notEmpty('phone');
+
+        $validator
+            ->add('email', 'valid', ['rule' => 'email'])
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
+
+        $validator
+            ->requirePresence('message', 'create')
+            ->notEmpty('message');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['email']));
+        return $rules;
     }
 }

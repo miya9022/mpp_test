@@ -21,8 +21,20 @@
             <td><?= h($shop->name) ?></td>
         </tr>
         <tr>
+            <th><?= __('Phone') ?></th>
+            <td><?= h($shop->phone) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Email') ?></th>
+            <td><?= h($shop->email) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($shop->id) ?></td>
         </tr>
     </table>
+    <div class="row">
+        <h4><?= __('Address') ?></h4>
+        <?= $this->Text->autoParagraph(h($shop->address)); ?>
+    </div>
 </div>

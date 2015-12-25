@@ -34,12 +34,25 @@
   font-size: 15px;
   text-transform: none;
   letter-spacing: 0;
+  float: left;
+  clear: left;
+  margin: 0;
+  padding: 0 .5em 0 0;
+  font-weight: bold;
 }
 .map .location dl dd {
   font-weight: 400;
   color: #ffffff;
   display: inline-block;
+  word-wrap: break-all;
 }
+
+.map .location dl dd:after {
+    content: ".";
+    visibility: hidden;
+    clear: left;
+}
+
 .map .location dl dt {
   font-weight: 600;
   color: #21c2f8;

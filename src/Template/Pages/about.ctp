@@ -88,7 +88,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
   =========================================================-->
     <header>  
       <div class="container-fluid top-sect header_bg_p">
-        <div class="navbar-header header_bg_p">
+        <div class="navbar-header" style="background-color: transparent">
           <h1 class="navbar-brand">
             <!-- <a data-type='rd-navbar-brand'  href="./" data-src="img/header-bg_1.jpg"></a> -->
             <?= $this->Html->image('header-bg_1.jpg', ['alt' => '', 'url' => ['controller' => 'pages']]) ?>
@@ -137,7 +137,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                   <ul class="dropdown-menu">
                     <?php foreach($types_product as $type): ?>
                     <li>
-                        <?= $this->Html->link(__(h($type->name)), ['controller' => 'productTypes', 'action' => 'view', h($type->id)]) ?>
+                        <?= $this->Html->link(__(h($type->name)), ['controller' => 'products', 'action' => 'index', h($type->id)]) ?>
                     </li>
                     <?php endforeach; ?>
                   </ul>

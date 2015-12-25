@@ -10,6 +10,8 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $address
  * @property string $phone
+ * @property string $email
+ * @property string $message
  */
 class Contact extends Entity
 {

@@ -209,7 +209,7 @@ ul.swot-list {
 
   background: rgb(33, 192, 245) none repeat 0% 0%;
 
-  /*background-image: linear-gradient(to bottom, #fff, #ddd);  */
+  /*background-image: linear-gradient(to bottom, rgb(33, 192, 245), #fff);  */
 
   padding: .7em 3.5em;
 
@@ -231,14 +231,17 @@ ul.swot-list {
 
 #tabs a:hover,
 
-#tabs a:hover::after,
+#tabs a:hover::after {
+
+  color: #fff;
+  
+}
 
 #tabs a:focus,
 
 #tabs a:focus::after {
 
   background: #fff;
-
 }
 
 
@@ -309,4 +312,108 @@ ul.swot-list {
 
   box-shadow: 0 -2px 3px -2px rgba(0, 0, 0, .5);
 
+}
+
+/* list news */
+.field_news {
+  border-bottom: 1px dotted #B6B6B6;
+  padding: 12px 0px;
+}
+
+.field_news h2,h3 {
+  font: bold 1em Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+  color: #5F5F5F;
+}
+
+.field_news a {
+  color: #7DA939;
+  text-decoration: none;
+}
+
+.field_news a.title {
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 115%;
+}
+
+.field_news p {
+  margin: 0px;
+}
+
+/* show news content and address bar*/
+.box-news {
+    background-color: white;
+    width: 100%;
+    border: 5px solid #21C2F8;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin: 15px;
+}
+
+.box-news .title-news{
+    vertical-align: middle;
+    background: #21C2F8;
+    padding-right: 32px;
+    position: absolute;
+    top: -14px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    background-clip: content-box;
+    margin-left: -5px;
+    z-index: 1;
+}
+
+.box-news .title-news:after{
+    content: '';
+    margin-left: 16px;
+    top: 0;
+    height: 120px;
+    background: #21C2F8;
+    transform: skew(31deg,0deg);
+    -o-transform: skew(31deg,0deg);
+    -ms-transform: skew(31deg,0deg);
+    -moz-transform: skew(31deg,0deg);
+    -webkit-transform: skew(59deg,0deg);
+    position: absolute;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: -1;
+}
+
+.box-news .title-news > h3,h4 {
+    line-height: 1.25;
+    color: #FFF !important;
+    font-weight: 700;
+    text-transform: none;
+    padding: 2px 3px 0px 15px;
+}
+
+.box-news .content-news {
+    position: relative;
+    padding: 25px;
+}
+
+.box-news .content-news .title-content {
+  width: 100%;
+}
+
+.box-news .content-news .title-content h3, h4 {
+  font-weight: bold;
+  color: #000;
+}
+
+.box-news .content-news .image-content {
+  width: 100%;
+  height: 20%;
+}
+
+.box-news .content-news .main-content {
+  width: 100%;
+  height: 80%;
 }

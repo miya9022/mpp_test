@@ -15,6 +15,10 @@
             <td><?= h($contact->phone) ?></td>
         </tr>
         <tr>
+            <th><?= __('Email') ?></th>
+            <td><?= h($contact->email) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($contact->id) ?></td>
         </tr>
@@ -26,5 +30,9 @@
     <div class="row">
         <h4><?= __('Address') ?></h4>
         <?= $this->Text->autoParagraph(h($contact->address)); ?>
+    </div>
+    <div class="row">
+        <h4><?= __('Message') ?></h4>
+        <?= $this->Text->autoParagraph(h($contact->message)); ?>
     </div>
 </div>

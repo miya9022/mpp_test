@@ -50,6 +50,16 @@ class ShopsTable extends Table
         $validator
             ->allowEmpty('name');
 
+        $validator
+            ->allowEmpty('address');
+
+        $validator
+            ->allowEmpty('phone');
+
+        $validator
+            ->add('email', 'valid', ['rule' => 'email'])
+            ->allowEmpty('email');
+
         return $validator;
     }
 
@@ -62,6 +72,7 @@ class ShopsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['area_id'], 'AreaDistribution'));
         return $rules;
     }

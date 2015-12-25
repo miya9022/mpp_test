@@ -9,13 +9,9 @@ use Cake\ORM\TableRegistry;
 
 
 /**
-
  * Products Controller
-
  *
-
  * @property \App\Model\Table\ProductsTable $Products
-
  */
 
 class ProductsController extends AppController
@@ -25,22 +21,34 @@ class ProductsController extends AppController
 
 
     /**
-
      * index method
-
      *
-
      * @return void
-
      */
 
-    public function index()
+    public function index($id = null)
 
     {
 
         parent::loadData();
 
         $this->set('page_title', 'Sản phẩm');
+        $this->set('page_title_en', 'Products');
+
+        $products_loaded = TableRegistry::get('Products');
+
+        if(isset($id)){
+            $this->set('active_type', $id);
+        }
+        
+        $types = TableRegistry::get('product_types')->find('all');
+        $count = 1;
+        foreach ($types as $type) {
+            $productsByTypeId = $products_loaded->find('all')
+                                    ->where(['Products.type_id' => $type->id]);
+            $this->set('products' . $count, $productsByTypeId);
+            $count++;
+        }
 
         $this->paginate = [
 
@@ -57,22 +65,20 @@ class ProductsController extends AppController
 
 
     /**
-
      * View method
-
      *
-
      * @param string|null $id Product id.
-
      * @return void
-
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
-
      */
 
     public function view($id = null)
 
     {
+        parent::loadData();
+
+        $this->set('page_title', 'Sản phẩm');
+        $this->set('page_title_en', 'Products');
 
         $product = $this->Products->get($id, [
 

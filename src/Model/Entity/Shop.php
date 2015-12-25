@@ -10,6 +10,9 @@ use Cake\ORM\Entity;
  * @property int $area_id
  * @property \App\Model\Entity\AreaDistribution $area_distribution
  * @property string $name
+ * @property string $address
+ * @property string $phone
+ * @property string $email
  */
 class Shop extends Entity
 {

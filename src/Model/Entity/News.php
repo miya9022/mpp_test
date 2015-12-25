@@ -7,10 +7,9 @@ use Cake\ORM\Entity;
  * News Entity.
  *
  * @property int $id
- * @property string $header
  * @property string $title
  * @property string $content
- * @property string $url
+ * @property string $url_img
  * @property \Cake\I18n\Time $post_date
  */
 class News extends Entity

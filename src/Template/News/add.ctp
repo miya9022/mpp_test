@@ -9,10 +9,9 @@
     <fieldset>
         <legend><?= __('Add News') ?></legend>
         <?php
-            echo $this->Form->input('header');
             echo $this->Form->input('title');
             echo $this->Form->input('content');
-            echo $this->Form->input('url');
+            echo $this->Form->input('url_img');
             echo $this->Form->input('post_date');
         ?>
     </fieldset>

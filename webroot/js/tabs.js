@@ -1,7 +1,13 @@
 $(document).ready(function() {
     $("#content").find("[id^='tab']").hide(); // Hide all content
-    $("#tabs li:first").attr("id","current"); // Activate the first tab
-    $("#content #tab1").fadeIn(); // Show first tab's content
+    // $("#tabs li:first").attr("id","current"); // Activate the first tab
+    $("#tabs li").each(function(){
+      if($(this).attr("id") == "current") {
+        var tab_curr = "#" + $(this).find("a").attr("name");
+        $("#content " + tab_curr).fadeIn();
+        return;
+      }
+    });
     
     $('#tabs a').click(function(e) {
         e.preventDefault();

@@ -79,7 +79,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->script('device.min') ?>
     <?= $this->Html->css('custom.css') ?>
     <!-- // <script src='js/device.min.js'></script> -->
-    
   </head>
   <body>
   <div class="page">
@@ -88,7 +87,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
   =========================================================-->
     <header>  
       <div class="container-fluid top-sect header_bg_p">
-        <div class="navbar-header header_bg_p">
+        <div class="navbar-header" style="background-color: transparent">
           <h1 class="navbar-brand">
             <!-- <a data-type='rd-navbar-brand'  href="./" data-src="img/header-bg_1.jpg"></a> -->
             <?= $this->Html->image('header-bg_1.jpg', ['alt' => '', 'url' => ['controller' => 'pages']]) ?>
@@ -137,7 +136,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                   <ul class="dropdown-menu">
                     <?php foreach($types_product as $type): ?>
                     <li>
-                        <?= $this->Html->link(__(h($type->name)), ['controller' => 'productTypes', 'action' => 'view', h($type->id)]) ?>
+                        <?= $this->Html->link(__(h($type->name)), ['controller' => 'products', 'action' => 'index', h($type->id)]) ?>
                     </li>
                     <?php endforeach; ?>
                   </ul>
@@ -176,48 +175,50 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
   =========================================================-->
 
    <main>
-      
+    <div class="container form-control-static">
+      <div class="row">
+        <div class="col-md-9 col-sm-10 col-xs-10">
+          <div class="field_news">
+            <h3>ABCDERGF</h3>
+            <?= $this->Html->link($this->Html->image('iphone.jpg', ['alt' => '']), ['controller' => 'news', 'action' => 'view', 1], ['escape' => false]) ?>
+
+            <!-- <a href="#"><?= $this->Html->image('iphone.jpg', ['alt' => '']) ?></a> -->
+            <a href="#" class="title">Hendrerit Sed Diam Ullamcorper»</a>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          </div>
+          <div class="field_news">
+            <h3>ABCDERGF</h3>
+            <a href="#"><?= $this->Html->image('iphone.jpg', ['alt' => '']) ?></a>
+            <a href="#" class="title">Hendrerit Sed Diam Ullamcorper»</a>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          </div>
+          <div class="field_news">
+            <h3>ABCDERGF</h3>
+            <a href="#"><?= $this->Html->image('iphone.jpg', ['alt' => '']) ?></a>
+            <a href="#" class="title">Hendrerit Sed Diam Ullamcorper»</a>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          </div>
+          <div class="field_news">
+            <h3>ABCDERGF</h3>
+            <a href="#"><?= $this->Html->image('iphone.jpg', ['alt' => '']) ?></a>
+            <a href="#" class="title">Hendrerit Sed Diam Ullamcorper»</a>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          </div>
+          <div class="field_news">
+            <h3>ABCDERGF</h3>
+            <a href="#"><?= $this->Html->image('iphone.jpg', ['alt' => '']) ?></a>
+            <a href="#" class="title">Hendrerit Sed Diam Ullamcorper»</a>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
    </main>
 
     <!--========================================================
                             FOOTER
   =========================================================-->
   <footer class="top-border">
-
-    <!-- <div class="map">
-      <div id="google-map" class="map_model" data-zoom="11"></div>
-      <ul class="map_locations">
-        <li data-x="105.876204" data-y="20.985991" data-basic="images/gmap_marker.png" data-active="images/gmap_marker_active.png">
-          <div class="location">
-            <h3 class="txt-clr1">
-              BUSINESS
-              <small>
-                COMPANY
-              </small>
-            </h3>  
-              <address>
-                <dl>
-                  <dt>Free phone: </dt>
-                  <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
-                </dl>
-                <dl>
-                  <dt>Address: </dt>
-                  <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
-                </dl>
-                <dl>
-                  <dt>Hours: </dt>
-                  <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
-                </dl>
-                <dl>
-                  <dt> E-mail: </dt>
-                  <dd><a href="mailto:#">info@demolink.org</a></dd>
-                </dl>
-              </address>
-            
-          </div>
-        </li>
-      </ul>
-    </div> -->
 
     <section class="well1">
       <div class="container"> 
@@ -234,39 +235,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <!-- Include all compiled plugins (below), or include individual files as needed -->    
     <?= $this->Html->script('bootstrap.min') ?>
     <?= $this->Html->script('tm-scripts') ?>
-    <script>
-        setInterval(
-            function () {
-                // Finds the ul holding the little dots
-                var ul = $(".camera_pag_ul");
-
-                // Finds the currently selected dot
-                var selected = ul.find('.cameracurrent');
-
-                // Finds the next dot to click
-                var next = selected.next('li');
-
-                // If the next dot exists click it, else start over with first one
-                if (next.length != 0) {
-                    next.click();
-                }
-                else {
-                    ul.find('li:first').click();
-                }
-            }, 10000
-        );
-
-        $(function(){
-            $('#camera').on('scroll', function(event){
-                $('.sliderImage').css({
-                    'background-position': $(event.target).scrollLeft()/6-10
-                });
-            });
-        });
-    </script>
-    <!-- <script src="js/bootstrap.min.js"></script>
-    // <script src="js/tm-scripts.js"></script>    --> 
-  <!-- </script> -->
 
 
   </body>

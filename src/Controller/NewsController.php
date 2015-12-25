@@ -34,6 +34,9 @@ class NewsController extends AppController
      */
     public function view($id = null)
     {
+        parent::loadData();
+        $this->set('page_title', 'Tin tức');
+        
         $news = $this->News->get($id, [
             'contain' => []
         ]);

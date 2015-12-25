@@ -79,16 +79,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->script('device.min') ?>
     <?= $this->Html->css('custom.css') ?>
     <!-- // <script src='js/device.min.js'></script> -->
+    <script type="text/javascript"> 
+        function open_windows(url) {
+        mywin = window.open(url,"win",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=760,height=650');
+        mywin.focus();
+        }
+    </script>
     
   </head>
-  <body>
+  <body onload="javascript:open_windows(url)">
   <div class="page">
   <!--========================================================
                             HEADER
   =========================================================-->
     <header>  
       <div class="container-fluid top-sect header_bg_p">
-        <div class="navbar-header header_bg_p">
+        <div class="navbar-header" style="background-color: transparent;">
           <h1 class="navbar-brand">
             <!-- <a data-type='rd-navbar-brand'  href="./" data-src="img/header-bg_1.jpg"></a> -->
             <?= $this->Html->image('header-bg_1.jpg', ['alt' => '', 'url' => ['controller' => 'pages']]) ?>
@@ -137,7 +143,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                   <ul class="dropdown-menu">
                     <?php foreach($types_product as $type): ?>
                     <li>
-                        <?= $this->Html->link(__(h($type->name)), ['controller' => 'productTypes', 'action' => 'view', h($type->id)]) ?>
+                        <?= $this->Html->link(__(h($type->name)), ['controller' => 'products', 'action' => 'index', h($type->id)]) ?>
                     </li>
                     <?php endforeach; ?>
                   </ul>
@@ -181,11 +187,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="container">
           <div class="camera_container">
             <div id="camera" class="camera_wrap">
-              <div class="slider" data-src="images/page-1_slide1.jpg">
+              <div class="slider" data-src="img/nha-may01.png">
               </div>
-              <div class="slider" data-src="images/page-1_slide2.jpg">
+              <div class="slider" data-src="img/nha-may-02.png">
               </div>
-              <div class="slider" data-src="images/page-1_slide3.jpg">
+              <div class="slider" data-src="img/nhua pvc2.jpg">
               </div>
             </div>
           </div>
@@ -193,17 +199,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
         <div class="container center991">
           <h2 class="txt-pr">
-            SẢN
-            <small>
-              PHẨM
-            </small>
+            SẢN PHẨM
           </h2>
 
-          <div class="row wow" data-wow-duration='2s'>
+          <div class="row wow fadeIn" data-wow-duration='2s'>
             
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="thumbnail thumb-shadow">
-                <?= $this->Html->image('products/mang-stechfilmhome.png', ['alt' => '']) ?>
+                <?= $this->Html->image('products/mang-strechfilm.png', ['alt' => '']) ?>
                 <!-- <img src="images/page-1_img2.jpg" alt=""> -->
                 <div class="caption bg3">
                   <h3>
@@ -218,14 +221,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                               $count++;
                           endforeach; ?>
                     </p>
-                    <?= $this->Html->link('', ['controller' => 'Products', 'action' => 'type', 2], ['class' => 'btn-link fa-angle-right']); ?>
+                    <?= $this->Html->link('', ['controller' => 'Products', 'action' => 'index', 2], ['class' => 'btn-link fa-angle-right']); ?>
                 </div>
               </div> 
             </div>
-            
+            </div>
           </div>
           <div class="row wow fadeIn" data-wow-duration='2s'>
-            <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="thumbnail thumb-shadow">
                 <?= $this->Html->image('products/pe_2.jpg', ['alt' => '']) ?>
                 <!-- <img src="images/page-1_img1.jpg" alt=""> -->
@@ -242,13 +245,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                               $count++;
                           endforeach; ?>
                     </p>
-                    <?= $this->Html->link('', ['controller' => 'Products', 'action' => 'type', 1], ['class' => 'btn-link fa-angle-right']); ?>
+                    <?= $this->Html->link('', ['controller' => 'Products', 'action' => 'index', 1], ['class' => 'btn-link fa-angle-right']); ?>
                     <!-- <a href="#" class="btn-link fa-angle-right"></a> -->
                   </div>  
                 </div>
               </div>              
             </div>
-            <div class="col-md-6 col-sm-12 col-xs-12">
+            </div> 
+
+            <div class="row wow fadeIn" data-wow-duration='2s'>
+            <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="thumbnail thumb-shadow">
                 <?= $this->Html->image('products/sanphamthanhprofile.png', ['alt' => '']) ?>
                 <div class="caption bg3">
@@ -264,12 +270,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                               $count++;
                           endforeach; ?>
                     </p>
-                    <?= $this->Html->link('', ['controller' => 'Products', 'action' => 'type', 3], ['class' => 'btn-link fa-angle-right']); ?>
+                    <?= $this->Html->link('', ['controller' => 'Products', 'action' => 'index', 3], ['class' => 'btn-link fa-angle-right']); ?>
                   </div>  
                 </div>
               </div> 
             </div>
-          </div>       
+          </div>
       </section>
       
       <section class="well well2 wow fadeIn  bg1" data-wow-duration='3s'>
@@ -296,7 +302,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
       </section>
 
-      <section class="well well2">
+      <!-- <section class="well well2">
         <div class="container">
         <h2>
           our
@@ -338,10 +344,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
-      <!-- <section class="well well3 parallax" data-url="images/parallax1.jpg" data-mobile="
-      true" data-speed="0.9">
+     <!--  <section class="well well3 parallax" data-url="images/parallax1.jpg" data-mobile="true" data-speed="0.9">
         <div class="container">
           <div class="wrap text-center">
             <strong>
@@ -357,15 +362,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <a href="#" class="btn btn-primary">read more <span class="fa-angle-right"></span></a>
           </div>  
         </div>        
-      </section> -->
+      </section>-->
 
       <section class="well well2">
         <div class="container">
           <h2>
-            our 
-            <small>
-              clients
-            </small>
+            <small>Đối tác</small>
           </h2>
 
           <div class="row offs1">
@@ -432,32 +434,61 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <li data-x="105.876204" data-y="20.985991" data-basic="images/gmap_marker.png" data-active="images/gmap_marker_active.png">
           <div class="location">
             <h3 class="txt-clr1">
-              BUSINESS
               <small>
-                COMPANY
+                Công ty 
               </small>
-            </h3>  
+                 Mai Phương
+            </h3> 
               <address>
                 <dl>
-                  <dt>Free phone: </dt>
-                  <dd class="phone"><a href="callto:#"> 800-2345-6789</a></dd>
+                  <dt>Số điện thoại: </dt>
+                  <dd class="phone"><a href="callto:#"> 098-666-2019</a></dd>
                 </dl>
                 <dl>
-                  <dt>Address: </dt>
-                  <dd> 4578 Marmora Road,Glasgow D04 89GR</dd>
+                  <dt>Địa chỉ: </dt>
+                  <dd> 106 Vĩnh Hưng, Hoàng Mai, Hà Nội</dd>
                 </dl>
                 <dl>
-                  <dt>Hours: </dt>
+                  <dt>Giờ làm việc: </dt>
                   <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
                 </dl>
                 <dl>
                   <dt> E-mail: </dt>
-                  <dd><a href="mailto:#">info@demolink.org</a></dd>
+                  <dd><a href="mailto:#">maiphuong.mpp@gmail.com</a></dd>
                 </dl>
               </address>
             
           </div>
         </li>
+        <li data-x="106.028513" data-y="21.119205" data-basic="images/gmap_marker2.png" data-active="images/gmap_marker2_active.png">
+          <div class="location">
+            <h3 class="txt-clr1">
+              <small>
+                Nhà máy sản xuất
+              </small>
+            </h3> 
+              <address>
+                <dl>
+                  <dt>Số điện thoại: </dt>
+                  <dd class="phone"><a href="callto:#"> 098-666-2019</a></dd>
+                </dl>
+                <dl>
+                  <dt>Địa chỉ: </dt>
+                  <dd> đường TS13, khu công nghiệp Tiên Sơn, xã Tương Giang, thị xã Từ Sơn, Bắc Ninh</dd>
+                </dl>
+                <dl>
+                  <dt>Giờ làm việc: </dt>
+                  <dd> 6am-4pm PST M-Th; &nbsp;&nbsp;  6am-3pm PST Fri</dd>
+                </dl>
+                <dl>
+                  <dt> E-mail: </dt>
+                  <dd><a href="mailto:#">maiphuong.mpp@gmail.com</a></dd>
+                </dl>
+              </address>
+            
+          </div>
+        </li>
+        
       </ul>
     </div>
 

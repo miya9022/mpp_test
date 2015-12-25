@@ -55,7 +55,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('search.css') ?>
 
     <!--JS-->
-    <?= $this->Html->script(['jquery', 'jquery-migrate-1.2.1.min', 'rd-smoothscroll.min']) ?>
+    <?= $this->Html->script(['jquery', 'jquery-migrate-1.2.1.min', 'rd-smoothscroll.min', 'skype-uri']) ?>
     <!-- <script src="js/jquery.js"></script>
     // <script src="js/jquery-migrate-1.2.1.min.js"></script> -->
    <!--  <script src="js/rd-smoothscroll.min.js"></script> -->
@@ -88,7 +88,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
   =========================================================-->
     <header>  
       <div class="container-fluid top-sect header_bg_p">
-        <div class="navbar-header header_bg_p">
+        <div class="navbar-header" style="background-color: transparent">
           <h1 class="navbar-brand">
             <!-- <a data-type='rd-navbar-brand'  href="./" data-src="img/header-bg_1.jpg"></a> -->
             <?= $this->Html->image('header-bg_1.jpg', ['alt' => '', 'url' => ['controller' => 'pages']]) ?>
@@ -121,13 +121,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
             <div class="">  
               <ul class="nav navbar-nav sf-menu" data-type="navbar">
-                <li class="active">
+                <li>
                     <?= $this->Html->link(__('TRANG CHỦ'), ['controller' => 'pages']) ?>
                 </li>
                 <li>
                     <?= $this->Html->link(__('GIỚI THIỆU'), ['controller' => 'pages', 'action' => 'about']) ?>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown active">
                     <?= $this->Html->link(__('SẢN PHẨM'). 
                             $this->Html->tag('span', '', ['class' => 'glyphicon glyphicon-menu-down', 'aria-hidden' => 'true']), 
                             ['controller' => 'products','action' => 'index'],
@@ -137,7 +137,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                   <ul class="dropdown-menu">
                     <?php foreach($types_product as $type): ?>
                     <li>
-                        <?= $this->Html->link(__(h($type->name)), ['controller' => 'productTypes', 'action' => 'view', h($type->id)]) ?>
+                        <?= $this->Html->link(__(h($type->name)), ['controller' => 'products', 'action' => 'index', h($type->id)]) ?>
                     </li>
                     <?php endforeach; ?>
                   </ul>
@@ -174,11 +174,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                             CONTENT
   =========================================================-->
   <main>
-    <div class="container">
+    <div class="container form-control-static">
       <ul id="tabs">
         <?php $count = 1;
               foreach($types_product as $type): ?>
-          <li><?= $this->Html->link(__(h($type->name)), '#', ['name' => 'tab' .$count]) ?></li>
+          <li id=<?= isset($active_type) ? ($active_type == $count ? 'current' : '') : ($count == 1 ? 'current' : '') ?>>
+            <?= $this->Html->link(__(h($type->name)), '#', ['name' => 'tab' .$count]) ?>
+          </li>
         <?php $count++;
               endforeach; ?>   
       </ul>
@@ -188,105 +190,90 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
               foreach($types_product as $type): ?>
               <div id= <?= 'tab' . $count ?>>
                 <div class="maincontent-area">
-                <div class="zigzag-bottom"></div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="latest-product">
-                                <div class="product-carousel owl-carousel owl-theme owl-responsive-1000 owl-loaded">
-                                    <div class="single-product">
-                                        <div class="product-f-image">
-                                            <img src="images/product-1.jpg" alt="">
-                                            <div class="product-hover">
-                                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                            </div>
-                                        </div>
-                                        
-                                        <h2><a href="single-product.html">Samsung Galaxy s5- 2015</a></h2>
-                                        
-                                        <div class="product-carousel-price">
-                                            <ins>$700.00</ins> <del>$100.00</del>
-                                        </div> 
-                                    </div>
-                                    <div class="single-product">
-                                        <div class="product-f-image">
-                                            <img src="img/product-2.jpg" alt="">
-                                            <div class="product-hover">
-                                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                            </div>
-                                        </div>
-                                        
-                                        <h2>Nokia Lumia 1320</h2>
-                                        <div class="product-carousel-price">
-                                            <ins>$899.00</ins> <del>$999.00</del>
-                                        </div> 
-                                    </div>
-                                    <div class="single-product">
-                                        <div class="product-f-image">
-                                            <img src="img/product-3.jpg" alt="">
-                                            <div class="product-hover">
-                                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                            </div>
-                                        </div>
-                                        
-                                        <h2>LG Leon 2015</h2>
+                  <div class="zigzag-bottom"></div>
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="latest-product">
+                                  <div class="product-carousel owl-carousel owl-theme owl-responsive-1000 owl-loaded">
+                                    <?php 
+                                      if(isset($products1) && $count == 1) :
+                                      foreach ($products1 as $product): ?>
+                                      <div class="single-product">
+                                          <div class="product-f-image">
+                                              <?= $this->Html->image($product->img_small, ['alt' => '']) ?>
+                                              <div class="product-hover">
+                                                  <!-- <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a> -->
+                                                  <?= $this->Html->link('<i class="fa fa-link"></i> Xem chi tiết', ['controller' => 'products', 'action' => 'view', h($product->id)], ['class' => 'view-details-link', 'escape'=> false]) ?>
+                                                  <!-- <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Xem chi tiết</a> -->
+                                              </div>
+                                          </div>
+                                          <h2>
+                                            <?= $this->Html->link(_(h($product->name)), ['controller' => 'products', 'action' => 'view', h($product->id)]) ?>
+                                            <!-- <a href="single-product.html">Samsung Galaxy s5- 2015</a> -->
+                                          </h2>
+                                          
+                                          <!-- <div class="product-carousel-price">
+                                              <ins>$700.00</ins> <del>$100.00</del>
+                                          </div> --> 
+                                      </div>
+                                    <?php 
+                                      endforeach; 
+                                      endif; ?>
 
-                                        <div class="product-carousel-price">
-                                            <ins>$400.00</ins> <del>$425.00</del>
-                                        </div>                                 
-                                    </div>
-                                    <div class="single-product">
-                                        <div class="product-f-image">
-                                            <img src="img/product-4.jpg" alt="">
-                                            <div class="product-hover">
-                                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                            </div>
-                                        </div>
-                                        
-                                        <h2><a href="single-product.html">Sony microsoft</a></h2>
+                                    <?php 
+                                      if(isset($products2) && $count == 2) :
+                                      foreach ($products2 as $product): ?>
+                                      <div class="single-product">
+                                          <div class="product-f-image">
+                                              <?= $this->Html->image($product->img_small, ['alt' => '']) ?>
+                                              <div class="product-hover">
+                                                  <!-- <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a> -->
+                                                  <?= $this->Html->link('<i class="fa fa-link"></i> Xem chi tiết', ['controller' => 'products', 'action' => 'view', h($product->id)], ['class' => 'view-details-link', 'escape'=> false]) ?>
+                                                  <!-- <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Xem chi tiết</a> -->
+                                              </div>
+                                          </div>
+                                          <h2>
+                                            <?= $this->Html->link(_(h($product->name)), ['controller' => 'products', 'action' => 'view', h($product->id)]) ?>
+                                            <!-- <a href="single-product.html">Samsung Galaxy s5- 2015</a> -->
+                                          </h2>
+                                          
+                                          <!-- <div class="product-carousel-price">
+                                              <ins>$700.00</ins> <del>$100.00</del>
+                                          </div> --> 
+                                      </div>
+                                    <?php 
+                                      endforeach; 
+                                      endif; ?>
 
-                                        <div class="product-carousel-price">
-                                            <ins>$200.00</ins> <del>$225.00</del>
-                                        </div>                            
-                                    </div>
-                                    <div class="single-product">
-                                        <div class="product-f-image">
-                                            <img src="img/product-5.jpg" alt="">
-                                            <div class="product-hover">
-                                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                            </div>
-                                        </div>
-                                        
-                                        <h2>iPhone 6</h2>
-
-                                        <div class="product-carousel-price">
-                                            <ins>$1200.00</ins> <del>$1355.00</del>
-                                        </div>                                 
-                                    </div>
-                                    <div class="single-product">
-                                        <div class="product-f-image">
-                                            <img src="img/product-6.jpg" alt="">
-                                            <div class="product-hover">
-                                                <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                            </div>
-                                        </div>
-                                        
-                                        <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-
-                                        <div class="product-carousel-price">
-                                            <ins>$400.00</ins>
-                                        </div>                            
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                      <?php 
+                                      if(isset($products3) && $count == 3) :
+                                      foreach ($products3 as $product): ?>
+                                      <div class="single-product">
+                                          <div class="product-f-image">
+                                              <?= $this->Html->image($product->img_small, ['alt' => '']) ?>
+                                              <div class="product-hover">
+                                                  <!-- <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a> -->
+                                                  <?= $this->Html->link('<i class="fa fa-link"></i> Xem chi tiết', ['controller' => 'products', 'action' => 'view', h($product->id)], ['class' => 'view-details-link', 'escape'=> false]) ?>
+                                                  <!-- <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Xem chi tiết</a> -->
+                                              </div>
+                                          </div>
+                                          <h2>
+                                            <?= $this->Html->link(_(h($product->name)), ['controller' => 'products', 'action' => 'view', h($product->id)]) ?>
+                                            <!-- <a href="single-product.html">Samsung Galaxy s5- 2015</a> -->
+                                          </h2>
+                                          
+                                          <!-- <div class="product-carousel-price">
+                                              <ins>$700.00</ins> <del>$100.00</del>
+                                          </div> --> 
+                                      </div>
+                                    <?php 
+                                      endforeach; 
+                                      endif; ?>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
         <?php $count++;
               endforeach; ?>   
@@ -327,7 +314,25 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <!-- <script src="js/bootstrap.min.js"></script>
      <script src="js/tm-scripts.js"></script></script> -->
-     
+     <script>
+        $('.product-carousel').owlCarousel({
+            loop:true,
+            nav:true,
+            margin:20,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                },
+                600:{
+                    items:3,
+                },
+                1000:{
+                    items:5,
+                }
+            }
+        });  
+     </script>
 
   </body>
 </html>
